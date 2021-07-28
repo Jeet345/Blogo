@@ -352,7 +352,7 @@
 
             $.ajax({
                 url: "{{ url('/login/forgotFormRequest') }}",
-                type: "POST",
+                type: "post",
                 data: formData,
                 success: function(data) {
 
