@@ -1,0 +1,141 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
+* {
+  margin: 0px;
+  padding: 0px;
+  font-family: "Nunito", sans-serif;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  outline: none;
+}
+
+*::-moz-selection {
+  background-color: #646eff;
+  color: white;
+}
+
+*::selection {
+  background-color: #646eff;
+  color: white;
+}
+
+.page-container {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: max-content 1fr;
+      grid-template-columns: -webkit-max-content 1fr;
+      grid-template-columns: max-content 1fr;
+}
+
+.page-container .sidebar {
+  width: 270px;
+  height: 100vh;
+  background-color: #11101d;
+  padding: 25px;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.page-container .sidebar .sidebar-header {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: max-content max-content;
+      grid-template-columns: -webkit-max-content -webkit-max-content;
+      grid-template-columns: max-content max-content;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  color: white;
+  overflow: hidden;
+}
+
+.page-container .sidebar .sidebar-header .menu-icon {
+  font-size: 1.1rem;
+  width: 50px;
+  height: 50px;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  margin-right: 25px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.page-container .sidebar .sidebar-header .menu-icon:hover {
+  -webkit-transform: scale(120%);
+          transform: scale(120%);
+}
+
+.page-container .sidebar .sidebar-menu-body {
+  margin-top: 40px;
+}
+
+.page-container .sidebar .sidebar-menu-body ul li {
+  list-style: none;
+}
+
+.page-container .sidebar .sidebar-menu-body ul li a {
+  display: -ms-grid;
+  display: grid;
+  width: 100%;
+  -ms-grid-columns: max-content max-content;
+      grid-template-columns: -webkit-max-content -webkit-max-content;
+      grid-template-columns: max-content max-content;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-decoration: none;
+  font-weight: 700;
+  margin-top: 10px;
+  font-size: 1.1rem;
+  color: #f1f1f1;
+  letter-spacing: 0.5px;
+  border-radius: 10px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  overflow: hidden;
+}
+
+.page-container .sidebar .sidebar-menu-body ul li a .icon {
+  width: 50px;
+  height: 50px;
+  font-size: 1.1rem;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+  margin-right: 5px;
+}
+
+.page-container .sidebar .sidebar-menu-body ul li a:hover {
+  background-color: #fff;
+  color: #11101d;
+}
+
+.page-container .sidebar .sidebar-menu-body ul li .active {
+  background-color: #fff;
+  color: #11101d;
+}
+
+.page-container .sidebar .sidebar-menu-body .logout {
+  position: relative;
+  top: 100px;
+}
+
+.page-container .collapse {
+  width: 80px;
+  padding: 15px;
+}
+
+.page-container .content-body {
+  height: 100vh;
+  overflow-y: scroll;
+  background-color: #f1f1f1;
+}
+/*# sourceMappingURL=dashboard.css.map */
