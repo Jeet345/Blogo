@@ -19,6 +19,13 @@
         integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
+    <script src="{{ asset('assets/ckeditor/ckeditor.js') }}"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.3.0/jquery.form.min.js"
+        integrity="sha384-qlmct0AOBiA2VPZkMY3+2WqkHtIQ9lSdAsAn5RUJD/3vA5MKDgSGcdmIv4ycVxyn" crossorigin="anonymous">
+    </script>
+
 
 
 
@@ -45,23 +52,23 @@
                             </span>
                             <h4>Dashboard</h4>
                         </a></li>
-                    <li><a href="viewBlog">
+                    <li><a href="viewPost">
                             <span class="icon">
-                                <i class="far fa-blog"></i>
+                                <i class="far fa-clipboard"></i>
                             </span>
-                            <h4>Blog</h4>
+                            <h4>Posts</h4>
                         </a></li>
-                    <li><a href="viewCategory">
+                    <li><a href="viewComment">
                             <span class="icon">
-                                <i class="far fa-folder-tree"></i>
+                                <i class="far fa-comment-alt-lines"></i>
                             </span>
-                            <h4>Category</h4>
+                            <h4>Comments</h4>
                         </a></li>
                     <li><a href="viewTags">
                             <span class="icon">
-                                <i class="far fa-tags"></i>
+                                <i class="far fa-heart"></i>
                             </span>
-                            <h4>Tags</h4>
+                            <h4>Favorite Posts</h4>
                         </a></li>
                     <li><a href="viewSetting">
                             <span class="icon">
@@ -72,7 +79,7 @@
                 </ul>
 
                 <ul class="logout">
-                    <li><a href="viewLogout">
+                    <li><a href="logout">
                             <span class="icon">
                                 <i class="far fa-sign-out-alt"></i>
                             </span>
@@ -85,7 +92,17 @@
         </div>
 
         <div class="content-body">
-            {{-- <h1>404 -- Page Not Found</h1> --}}
+
+            <div class="content-loader">
+                <h1>
+                    <i class="fad fa-spinner fa-spin"></i>
+                </h1>
+                <h5>LOADING</h5>
+            </div>
+
+            <div class="content">
+
+            </div>
         </div>
 
     </div>
@@ -101,32 +118,36 @@
 
 
 
-            function loadPage() {
+            function loadPage(menuClick) {
 
                 var filename = location.pathname.substr(location.pathname.lastIndexOf("/") + 1);
 
                 if (filename == 'dashboard' || filename == '') {
                     filename = 'viewDashboard';
-                    history.pushState(null, '', `/dashboard/${filename}`);
+                    history.replaceState(null, '', `/dashboard/${filename}`);
+                    $(document).prop('title', filename + ' -- Blogo');
+
                 } //
                 else {
-                    history.pushState(null, '', `/dashboard/${filename}`);
+                    if (!menuClick) {
+                        history.pushState(null, '', `/dashboard/${filename}`);
+                        $(document).prop('title', filename + ' -- Blogo');
+                    }
                 }
 
-                $('.page-container .content-body')
+                $('.page-container .content-body .content')
                     .load(`/dashboard/${filename}`,
                         function(data, statusTxt, xhr) {
+                            $('.page-container .content-body .content').show();
+                            $('.page-container .content-body .content-loader').hide();
                             if (statusTxt == 'success') {
-                                console.log('load Success');
                                 $('.page-container .sidebar .menu li a').removeClass('active');
                                 $(`.page-container .sidebar .menu li a[href=${filename}]`).addClass('active');
                             } //
                             else if (statusTxt == 'error') {
                                 if (xhr.status == '404') {
-                                    history.pushState(null, '', `/dashboard/404`);
-
+                                    $('.page-container .content-body .content').load(`/dashboard/404`);
                                     $('.page-container .sidebar .menu li a').removeClass('active');
-                                    $('.page-container .content-body').load(`/dashboard/404`);
                                 } //
                                 else {
                                     alert("Error: " + xhr.status + ": " + xhr.statusText);
@@ -138,8 +159,6 @@
                         });
             }
 
-
-
             // on click change url
             $('.page-container .sidebar .menu li a').click(function(e) {
 
@@ -147,13 +166,22 @@
 
                 var page = $(this).attr('href');
 
-                history.pushState(null, '', `/dashboard/${page}`);
+                $('.page-container .content-body .content-loader').show();
+                $('.page-container .content-body .content').hide();
 
-                loadPage();
+                history.pushState(null, '', `/dashboard/${page}`);
+                $(document).prop('title', page + ' -- Blogo');
+
+                loadPage(true);
 
             });
 
             loadPage();
+
+
+            $(window).bind('popstate', function() {
+                loadPage(true);
+            });
 
         });
     </script>

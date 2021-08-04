@@ -26,4 +26,10 @@ class DashboardController extends Controller
             return view('Author/dashboard');
         }
     }
+
+    function Authorlogout(Request $request)
+    {
+        $request->session()->pull('author');
+        return redirect('/');
+    }
 }

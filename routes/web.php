@@ -69,8 +69,8 @@ Route::group(['middleware' => ['clearCache']], function () {
         Route::get('/dashboard', function () {
             return view('author.dashboard');
         });
+        Route::get('dashboard/logout', [DashboardController::class, 'Authorlogout']);
         Route::get('dashboard/{ajaxPage}', [DashboardController::class, 'loadAjaxView']); // ajax load page
-
 
         // add 
     });
