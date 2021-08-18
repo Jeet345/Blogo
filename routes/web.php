@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\dashboard\PostsController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -69,9 +71,45 @@ Route::group(['middleware' => ['clearCache']], function () {
         Route::get('/dashboard', function () {
             return view('author.dashboard');
         });
-        Route::get('dashboard/logout', [DashboardController::class, 'Authorlogout']);
-        Route::get('dashboard/{ajaxPage}', [DashboardController::class, 'loadAjaxView']); // ajax load page
+        Route::get('/dashboard/logout', [DashboardController::class, 'Authorlogout']);
 
+        // view post
+        Route::get('/dashboard/viewPost', [PostsController::class, 'PostView']);
+        Route::post('/dashboard/viewPost/addPost', [PostsController::class, 'AddPost']);
+        Route::get('/dashboard/viewPost/addPost', function () {
+            return abort(404);
+        });
+        Route::post('/dashboard/viewPost/published', [PostsController::class, 'publishPost']);
+        Route::get('/dashboard/viewPost/published', function () {
+            return abort(404);
+        });
+
+        Route::post('/dashboard/viewPost/draft', [PostsController::class, 'unpublishPost']);
+        Route::get('/dashboard/viewPost/draft', function () {
+            return abort(404);
+        });
+
+        Route::post('/dashboard/viewPost/delete', [PostsController::class, 'deletePost']);
+        Route::get('/dashboard/viewPost/delete', function () {
+            return abort(404);
+        });
+
+        Route::post('/dashboard/viewPost/loadUpdate', [PostsController::class, 'loadUpdate']);
+        Route::get('/dashboard/viewPost/loadUpdate', function () {
+            return abort(404);
+        });
+
+        Route::post('/dashboard/viewPost/updatePost', [PostsController::class, 'updatePost']);
+        Route::get('/dashboard/viewPost/updatePost', function () {
+            return abort(404);
+        });
+
+        Route::post('/dashboard/viewPost/loadMore', [PostsController::class, 'loadMore']);
+        Route::get('/dashboard/viewPost/loadMore', function () {
+            return abort(404);
+        });
+
+        Route::get('/dashboard/viewDashboard', [PostsController::class, 'DashboardView']);
         // add 
     });
 });

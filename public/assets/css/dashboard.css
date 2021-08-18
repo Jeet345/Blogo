@@ -160,8 +160,8 @@ body {
   letter-spacing: 1px;
 }
 
-.page-container .content-body .content {
-  display: none;
+.page-container .content-body .content .post-container {
+  margin-bottom: 100px;
 }
 
 .page-container .content-body .content .post-container .post-header {
@@ -211,11 +211,11 @@ body {
 }
 
 .page-container .content-body .content .post-container .post-header .add-button span i {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
   color: green;
   font-size: 0.9rem;
 }
@@ -273,11 +273,12 @@ body {
 }
 
 .page-container .content-body .content .post-container .post-header .right-side-header .box .icon i {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  display: -ms-grid;
+  display: grid;
+  border-radius: 100%;
+  place-items: center;
   color: green;
   font-size: 0.7rem;
 }
@@ -487,17 +488,67 @@ body {
           transform: translateY(-3px);
 }
 
-.page-container .content-body .content .add-form-container {
+.page-container .content-body .content .post-container .load-more-button {
+  display: table;
+  margin: auto;
+}
+
+.page-container .content-body .content .post-container .load-more-button button {
+  padding: 12px 32px;
+  background: none;
+  border: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #603ef6;
+  border-radius: 5px;
+  color: white;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+  -webkit-box-shadow: 0px 0px 15px -5px #4822f0b2;
+          box-shadow: 0px 0px 15px -5px #4822f0b2;
+}
+
+.page-container .content-body .content .post-container .load-more-button button:enabled:hover, .page-container .content-body .content .post-container .load-more-button button:enabled:focus {
+  -webkit-transform: translateY(-1px);
+          transform: translateY(-1px);
+  background-color: #4722f0;
+}
+
+.page-container .content-body .content .post-container .load-more-button button:disabled {
+  cursor: not-allowed;
+}
+
+.page-container .content-body .content .post-container .load-more-button button:disabled i {
+  display: block;
+}
+
+.page-container .content-body .content .post-container .load-more-button button i {
+  margin-left: 10px;
+  font-size: 1rem;
+  display: none;
+}
+
+.page-container .content-body .content .add-form-container,
+.page-container .content-body .content .update-form-container {
   position: absolute;
   top: 0px;
   background-color: rgba(128, 128, 128, 0.6);
   width: 100%;
-  height: 100%;
+  height: 100vh;
   overflow: hidden;
   display: none;
 }
 
-.page-container .content-body .content .add-form-container .form-box {
+.page-container .content-body .content .add-form-container .form-box,
+.page-container .content-body .content .update-form-container .form-box {
   width: 85%;
   height: 85%;
   overflow-y: auto;
@@ -511,7 +562,8 @@ body {
           box-shadow: 0px 0px 15px -5px rgba(173, 173, 173, 0.7);
 }
 
-.page-container .content-body .content .add-form-container .form-box .form-header {
+.page-container .content-body .content .add-form-container .form-box .form-header,
+.page-container .content-body .content .update-form-container .form-box .form-header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -528,12 +580,14 @@ body {
   border-bottom: 2px solid #ececec;
 }
 
-.page-container .content-body .content .add-form-container .form-box .form-header h3 {
+.page-container .content-body .content .add-form-container .form-box .form-header h3,
+.page-container .content-body .content .update-form-container .form-box .form-header h3 {
   font-size: 1.1rem;
   letter-spacing: 0.4px;
 }
 
-.page-container .content-body .content .add-form-container .form-box .form-header .close-btn {
+.page-container .content-body .content .add-form-container .form-box .form-header .close-btn,
+.page-container .content-body .content .update-form-container .form-box .form-header .close-btn {
   width: 20px;
   height: 20px;
   font-size: 1.2rem;
@@ -545,29 +599,46 @@ body {
   cursor: pointer;
 }
 
-.page-container .content-body .content .add-form-container .form-box .form-header .close-btn:hover {
+.page-container .content-body .content .add-form-container .form-box .form-header .close-btn:hover,
+.page-container .content-body .content .update-form-container .form-box .form-header .close-btn:hover {
   -webkit-transform: rotate(180deg);
           transform: rotate(180deg);
 }
 
-.page-container .content-body .content .add-form-container .form-box .input-box {
+.page-container .content-body .content .add-form-container .form-box .input-box,
+.page-container .content-body .content .update-form-container .form-box .input-box {
   padding: 12px 30px;
 }
 
-.page-container .content-body .content .add-form-container .form-box .input-box .input-filed {
+.page-container .content-body .content .add-form-container .form-box .input-box .input-filed,
+.page-container .content-body .content .update-form-container .form-box .input-box .input-filed {
   margin-bottom: 20px;
   width: 100%;
 }
 
-.page-container .content-body .content .add-form-container .form-box .input-box .input-filed h5 {
+.page-container .content-body .content .add-form-container .form-box .input-box .input-filed h5,
+.page-container .content-body .content .update-form-container .form-box .input-box .input-filed h5 {
   font-weight: 700;
   font-size: 0.9rem;
   margin-bottom: 5px;
 }
 
+.page-container .content-body .content .add-form-container .form-box .input-box .input-filed .error-text,
+.page-container .content-body .content .update-form-container .form-box .input-box .input-filed .error-text {
+  color: red;
+  font-size: 0.9rem;
+  font-weight: 700;
+  padding-top: 3px;
+  padding-left: 3px;
+  display: none;
+}
+
 .page-container .content-body .content .add-form-container .form-box .input-box .input-filed input[type="text"],
 .page-container .content-body .content .add-form-container .form-box .input-box .input-filed select,
-.page-container .content-body .content .add-form-container .form-box .input-box .input-filed .check-select {
+.page-container .content-body .content .add-form-container .form-box .input-box .input-filed .check-select,
+.page-container .content-body .content .update-form-container .form-box .input-box .input-filed input[type="text"],
+.page-container .content-body .content .update-form-container .form-box .input-box .input-filed select,
+.page-container .content-body .content .update-form-container .form-box .input-box .input-filed .check-select {
   display: block;
   width: 100%;
   background: none;
@@ -584,15 +655,24 @@ body {
 
 .page-container .content-body .content .add-form-container .form-box .input-box .input-filed input[type="text"]:focus,
 .page-container .content-body .content .add-form-container .form-box .input-box .input-filed select:focus,
-.page-container .content-body .content .add-form-container .form-box .input-box .input-filed .check-select:focus {
+.page-container .content-body .content .add-form-container .form-box .input-box .input-filed .check-select:focus,
+.page-container .content-body .content .update-form-container .form-box .input-box .input-filed input[type="text"]:focus,
+.page-container .content-body .content .update-form-container .form-box .input-box .input-filed select:focus,
+.page-container .content-body .content .update-form-container .form-box .input-box .input-filed .check-select:focus {
   border-color: black;
 }
 
-.page-container .content-body .content .add-form-container .form-box .input-box .input-filed .check-select {
+.page-container .content-body .content .add-form-container .form-box .input-box .input-filed .check-select,
+.page-container .content-body .content .update-form-container .form-box .input-box .input-filed .check-select {
   position: relative;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
-.page-container .content-body .content .add-form-container .form-box .input-box .input-filed .check-select .check-item {
+.page-container .content-body .content .add-form-container .form-box .input-box .input-filed .check-select .check-item,
+.page-container .content-body .content .update-form-container .form-box .input-box .input-filed .check-select .check-item {
   font-size: 0.95rem;
   font-weight: 600;
   display: -webkit-box;
@@ -605,7 +685,8 @@ body {
   cursor: default;
 }
 
-.page-container .content-body .content .add-form-container .form-box .input-box .input-filed .check-select .drop-down {
+.page-container .content-body .content .add-form-container .form-box .input-box .input-filed .check-select .drop-down,
+.page-container .content-body .content .update-form-container .form-box .input-box .input-filed .check-select .drop-down {
   position: absolute;
   background-color: #f5f5f5;
   width: 100%;
@@ -619,7 +700,8 @@ body {
   display: none;
 }
 
-.page-container .content-body .content .add-form-container .form-box .input-box .input-filed .check-select .drop-down label {
+.page-container .content-body .content .add-form-container .form-box .input-box .input-filed .check-select .drop-down label,
+.page-container .content-body .content .update-form-container .form-box .input-box .input-filed .check-select .drop-down label {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -631,24 +713,28 @@ body {
   transition: 0.2s;
 }
 
-.page-container .content-body .content .add-form-container .form-box .input-box .input-filed .check-select .drop-down label span {
+.page-container .content-body .content .add-form-container .form-box .input-box .input-filed .check-select .drop-down label span,
+.page-container .content-body .content .update-form-container .form-box .input-box .input-filed .check-select .drop-down label span {
   margin-left: 10px;
   font-size: 1rem;
   display: block;
   letter-spacing: 0.7px;
 }
 
-.page-container .content-body .content .add-form-container .form-box .input-box .input-filed .check-select .drop-down label input {
+.page-container .content-body .content .add-form-container .form-box .input-box .input-filed .check-select .drop-down label input,
+.page-container .content-body .content .update-form-container .form-box .input-box .input-filed .check-select .drop-down label input {
   width: 15px;
   height: 15px;
   display: block;
 }
 
-.page-container .content-body .content .add-form-container .form-box .input-box .input-filed .check-select .drop-down label:hover {
+.page-container .content-body .content .add-form-container .form-box .input-box .input-filed .check-select .drop-down label:hover,
+.page-container .content-body .content .update-form-container .form-box .input-box .input-filed .check-select .drop-down label:hover {
   background-color: #dbdbdb;
 }
 
-.page-container .content-body .content .add-form-container .form-box .input-box .input-filed .bannerLabel {
+.page-container .content-body .content .add-form-container .form-box .input-box .input-filed .bannerLabel,
+.page-container .content-body .content .update-form-container .form-box .input-box .input-filed .bannerLabel {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -667,27 +753,31 @@ body {
   font-weight: 600;
 }
 
-.page-container .content-body .content .add-form-container .form-box .input-box .input-filed .bannerLabel .fileChoose {
+.page-container .content-body .content .add-form-container .form-box .input-box .input-filed .bannerLabel .fileChoose,
+.page-container .content-body .content .update-form-container .form-box .input-box .input-filed .bannerLabel .fileChoose {
   padding: 7px 25px;
   background-color: #f1f1f1;
   border-right: 1px solid #c4c4c4;
 }
 
-.page-container .content-body .content .add-form-container .form-box .input-box .input-filed .bannerLabel .filename {
+.page-container .content-body .content .add-form-container .form-box .input-box .input-filed .bannerLabel .filename,
+.page-container .content-body .content .update-form-container .form-box .input-box .input-filed .bannerLabel .filename {
   padding: 7px 25px;
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
 }
 
-.page-container .content-body .content .add-form-container .form-box .input-box .row {
+.page-container .content-body .content .add-form-container .form-box .input-box .row,
+.page-container .content-body .content .update-form-container .form-box .input-box .row {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   grid-gap: 20px;
 }
 
-.page-container .content-body .content .add-form-container .form-box .form-footer {
+.page-container .content-body .content .add-form-container .form-box .form-footer,
+.page-container .content-body .content .update-form-container .form-box .form-footer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -699,7 +789,15 @@ body {
   margin-bottom: 50px;
 }
 
-.page-container .content-body .content .add-form-container .form-box .form-footer .buttons button {
+.page-container .content-body .content .add-form-container .form-box .form-footer .buttons,
+.page-container .content-body .content .update-form-container .form-box .form-footer .buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.page-container .content-body .content .add-form-container .form-box .form-footer .buttons button,
+.page-container .content-body .content .update-form-container .form-box .form-footer .buttons button {
   background: none;
   border: none;
   background-color: #fff;
@@ -708,23 +806,48 @@ body {
   padding: 7px 16px;
   font-size: 0.9rem;
   cursor: pointer;
-  margin-left: 5px;
+  margin-left: 8px;
   font-weight: 600;
   -webkit-transition: 0.3s;
   transition: 0.3s;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-.page-container .content-body .content .add-form-container .form-box .form-footer .buttons .submit-btn {
+.page-container .content-body .content .add-form-container .form-box .form-footer .buttons .submit-btn,
+.page-container .content-body .content .update-form-container .form-box .form-footer .buttons .submit-btn {
   background-color: #337ab7;
   color: #fff;
   border: none;
 }
 
-.page-container .content-body .content .add-form-container .form-box .form-footer .buttons .submit-btn:hover {
+.page-container .content-body .content .add-form-container .form-box .form-footer .buttons .submit-btn i,
+.page-container .content-body .content .update-form-container .form-box .form-footer .buttons .submit-btn i {
+  margin-left: 7px;
+  display: none;
+}
+
+.page-container .content-body .content .add-form-container .form-box .form-footer .buttons .submit-btn:enabled:hover,
+.page-container .content-body .content .update-form-container .form-box .form-footer .buttons .submit-btn:enabled:hover {
   background-color: #2088e2;
 }
 
-.page-container .content-body .content .add-form-container .form-box .form-footer .buttons .reset-btn:hover {
+.page-container .content-body .content .add-form-container .form-box .form-footer .buttons .submit-btn:disabled,
+.page-container .content-body .content .update-form-container .form-box .form-footer .buttons .submit-btn:disabled {
+  cursor: not-allowed;
+}
+
+.page-container .content-body .content .add-form-container .form-box .form-footer .buttons .submit-btn:disabled i,
+.page-container .content-body .content .update-form-container .form-box .form-footer .buttons .submit-btn:disabled i {
+  display: block;
+}
+
+.page-container .content-body .content .add-form-container .form-box .form-footer .buttons .reset-btn:hover,
+.page-container .content-body .content .update-form-container .form-box .form-footer .buttons .reset-btn:hover {
   background-color: #f1f1f1;
 }
 /*# sourceMappingURL=dashboard.css.map */
