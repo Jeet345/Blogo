@@ -29,7 +29,7 @@
 
         <div class="heading">
             <h4 class="title">tag</h4>
-            <h1 class="cat-name">lifestyle</h1>
+            <h1 class="cat-name">{{ $tagName }}</h1>
             <h1 class="background">browsing</h1>
         </div>
 
@@ -38,128 +38,39 @@
 
             <div class="blog-list">
 
-                <div class="list-card">
+                @foreach ($postData as $data)
 
-                    <a href="img" class="img">
-                        <img src="{{ asset('assets/images/girl.jpg') }}" alt="">
-                    </a>
+                    <div class="list-card">
 
-                    <div class="blog-info">
+                        <a href="/blog/{{ $data->BlogId }}" class="img">
+                            <img src="{{ asset("assets/images/uploadImage/$data->BlogImage") }}" alt="">
+                        </a>
 
-                        <div class="first-line">
-                            <a href="" class="blog-date">may 15 2018</a>
-                            <a href="" class="category">Gadgets</a>
-                        </div>
+                        <div class="blog-info">
 
-                        <div class="title">
-                            <a href="">Tupac tribute murals and graffiti from around the world</a>
-                        </div>
+                            <div class="first-line">
+                                <a href="" class="blog-date">{{ $data->BlogPostDate }}</a>
+                                <a href="/category/{{ $data->CategoryName }}"
+                                    class="category">{{ $data->CategoryName }}</a>
+                            </div>
 
-                        <div class="blog-desc">
-                            <p>More off this less hello salamander lied porpoise much over tightly circa
-                                horse taped so…</p>
-                        </div>
+                            <div class="title">
+                                <a href="/blog/{{ $data->BlogId }}">{{ $data->BlogTitle }}</a>
+                            </div>
 
-                        <div class="btn">
-                            <button>read more</button>
-                        </div>
+                            <div class="blog-desc">
+                                <p>{{ Str::limit($data->BlogContent, 100) }}</p>
+                            </div>
 
-                    </div>
+                            <div class="btn">
+                                <a href='/blog/{{ $data->BlogId }}'>read more</a>
+                            </div>
 
-                </div>
-
-                <div class="list-card">
-
-                    <a href="img" class="img">
-                        <img src="{{ asset('assets/images/girl.jpg') }}" alt="">
-                    </a>
-
-                    <div class="blog-info">
-
-                        <div class="first-line">
-                            <a href="" class="blog-date">may 15 2018</a>
-                            <a href="" class="category">Gadgets</a>
-                        </div>
-
-                        <div class="title">
-                            <a href="">Tupac tribute murals and graffiti from around the world</a>
-                        </div>
-
-                        <div class="blog-desc">
-                            <p>More off this less hello salamander lied porpoise much over tightly circa
-                                horse taped so…</p>
-                        </div>
-
-                        <div class="btn">
-                            <button>read more</button>
                         </div>
 
                     </div>
 
-                </div>
-
-
-                <div class="list-card">
-
-                    <a href="img" class="img">
-                        <img src="{{ asset('assets/images/girl.jpg') }}" alt="">
-                    </a>
-
-                    <div class="blog-info">
-
-                        <div class="first-line">
-                            <a href="" class="blog-date">may 15 2018</a>
-                            <a href="" class="category">Gadgets</a>
-                        </div>
-
-                        <div class="title">
-                            <a href="">Tupac tribute murals and graffiti from around the world</a>
-                        </div>
-
-                        <div class="blog-desc">
-                            <p>More off this less hello salamander lied porpoise much over tightly circa
-                                horse taped so…</p>
-                        </div>
-
-                        <div class="btn">
-                            <button>read more</button>
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <div class="list-card">
-
-                    <a href="img" class="img">
-                        <img src="{{ asset('assets/images/girl.jpg') }}" alt="">
-                    </a>
-
-                    <div class="blog-info">
-
-                        <div class="first-line">
-                            <a href="" class="blog-date">may 15 2018</a>
-                            <a href="" class="category">Gadgets</a>
-                        </div>
-
-                        <div class="title">
-                            <a href="">Tupac tribute murals and graffiti from around the world</a>
-                        </div>
-
-                        <div class="blog-desc">
-                            <p>More off this less hello salamander lied porpoise much over tightly circa
-                                horse taped so…</p>
-                        </div>
-
-                        <div class="btn">
-                            <button>read more</button>
-                        </div>
-
-                    </div>
-
-                </div>
-
+                @endforeach
 
             </div>
 
@@ -186,48 +97,25 @@
                         <h2>Latest Posts</h2>
                     </div>
 
-                    <div class="latest-post-card">
-                        <a href="img" class="img">
-                            <img src="{{ asset('assets/images/ballone.jpg') }}" alt="">
-                        </a>
-                        <div class="post-info">
-                            <h3 class="post-title">
-                                <a href="#">
-                                    Why every startup should adopt Amazon’s Hot Air Ballon Race
-                                </a>
-                            </h3>
-                            <h4 class="post-date">aug 14 2018</h4>
-                        </div>
-                    </div>
+                    @foreach ($latestBlog as $data)
 
-                    <div class="latest-post-card">
-                        <a href="img" class="img">
-                            <img src="{{ asset('assets/images/ballone.jpg') }}" alt="">
-                        </a>
-                        <div class="post-info">
-                            <h3 class="post-title">
-                                <a href="#">
-                                    Why every startup should should should should should should adopt Amazon’s Hot Air
-                                    Ballon Race
-                                </a>
-                            </h3>
-                            <h4 class="post-date">aug 14 2018</h4>
+                        <div class="latest-post-card">
+                            <a href="/blog/{{ $data->BlogId }}" class="img">
+                                <img src="{{ asset("assets/images/uploadImage/$data->BlogImage") }}" alt="">
+                            </a>
+                            <div class="post-info">
+                                <h3 class="post-title">
+                                    <a href="/blog/{{ $data->BlogId }}">
+                                        {{ Str::limit($data->BlogTitle, 80) }}
+                                    </a>
+                                </h3>
+                                <h4 class="post-date">{{ $data->BlogPostDate }}</h4>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="latest-post-card">
-                        <a href="img" class="img">
-                            <img src="{{ asset('assets/images/ballone.jpg') }}" alt="">
-                        </a>
-                        <div class="post-info">
-                            <h3 class="post-title">
-                                <a href="#">
-                                    Why every amazon’s Hot Air Ballon Race
-                                </a>
-                            </h3>
-                            <h4 class="post-date">aug 14 2018</h4>
-                        </div>
-                    </div>
+                    @endforeach
+
+
                 </div>
 
             </aside>

@@ -3,25 +3,17 @@
 namespace App\Http\Controllers\dashboard;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Validator;
 
-class PostsController extends Controller
+class FavoriteController extends Controller
 {
     //
 
-    function PostView(Request $request)
+    function index(Request $request)
     {
         if ($request->ajax()) {
-
-            // get all tag
-            $tagData = DB::table('tags')->get();
-
-            // get all category
-            $categoryData = DB::table('category')->get();
-
 
             $authorId = $request->session()->get('author');
 
@@ -47,13 +39,11 @@ class PostsController extends Controller
 
 
             return view(
-                'Author/viewPost',
+                'Author/viewFavorite',
                 [
                     'publishedPostCount' => $publishedPostCount,
                     'UnpublishedPostCount' => $UnpublishedPostCount,
                     'postData' => $postData,
-                    'tagData' => $tagData,
-                    'categoryData' => $categoryData,
                 ]
             );
         } //
@@ -106,78 +96,6 @@ class PostsController extends Controller
         }
     }
 
-    function AddPost(Request $request)
-    {
-
-        $bannerImg = $request->file('bannerImg');
-        $authorId = $request->session()->get('author');
-        $postDate = date('M d Y');
-
-        $validate = Validator::make($request->all(), [
-            'category' => 'required',
-            'title' => 'required',
-            'bannerImg' => 'required',
-            'content' => 'required'
-        ]);
-
-        if (!$validate->fails()) {
-
-            $path = 'assets/images/uploadImage';
-            $extension = $bannerImg->getClientOriginalExtension();
-            $newImgName = bin2hex(random_bytes(14)) . '.' . $extension;
-            $store = $bannerImg->move($path, $newImgName);
-
-
-            $fetchCategoryId = DB::table('category')
-                ->where('CategoryName', '=', $request->category)
-                ->get('CategoryId');
-
-            if (!$fetchCategoryId->isEmpty()) {
-                $fetchCategoryId = $fetchCategoryId[0]->CategoryId;
-
-                if ($store) {
-
-                    // insert into database
-                    $insertPost = DB::table('blog')
-                        ->insert([
-                            'BlogTitle' => $request->title,
-                            'BlogContent' => $request->content,
-                            'BlogCategoryId' => $fetchCategoryId,
-                            'BlogAuthorId' => $authorId,
-                            'BlogTags' => $request->tags,
-                            'BlogImage' => $newImgName,
-                            'BlogPostDate' => $postDate
-                        ]);
-
-                    if ($insertPost) {
-                        return response()->json([
-                            'status' => 1,
-                            'msg' => 'Post Inserted Successfully'
-                        ]);
-                    }
-                } //
-                else {
-                    return response()->json([
-                        'status' => 0,
-                        'error' => 'File Upload Fails Please Try Later.'
-                    ]);
-                }
-            } //
-            else {
-                return response()->json([
-                    'status' => 0,
-                    'error' => 'Unable To Find Category Please Try Later.'
-                ]);
-            }
-        } //
-        else {
-            return response()->json([
-                'status' => 0,
-                'error' => 'Please Enter Valid Data.'
-            ]);
-        }
-    }
-
     function deletePost(Request $request)
     {
 
@@ -216,94 +134,6 @@ class PostsController extends Controller
             return response()->json([
                 'status' => 0,
                 'error' => "Post Not Found"
-            ]);
-        }
-    }
-
-    function DashboardView(Request $request)
-    {
-
-        if ($request->ajax()) {
-            return view('Author/viewDashboard', []);
-        } //
-        else {
-            return view('Author/dashboard');
-        }
-    }
-
-    function updatePost(Request $request)
-    {
-        $bannerImg = $request->file('bannerImg');
-
-        $validate = Validator::make($request->all(), [
-            'category' => 'required',
-            'title' => 'required',
-            'content' => 'required'
-        ]);
-
-        if (!$validate->fails()) {
-
-            $newImgName = '';
-            if ($bannerImg) {
-
-                $path = 'assets/images/uploadImage';
-                $extension = $bannerImg->getClientOriginalExtension();
-                $newImgName = bin2hex(random_bytes(14)) . '.' . $extension;
-                $bannerImg->move($path, $newImgName);
-            }
-
-
-            $fetchCategoryId = DB::table('category')
-                ->where('CategoryName', '=', $request->category)
-                ->get('CategoryId');
-
-            if (!$fetchCategoryId->isEmpty()) {
-                $fetchCategoryId = $fetchCategoryId[0]->CategoryId;
-
-
-                // update into database
-
-                if ($bannerImg) {
-                    $insertPost = DB::table('blog')
-                        ->where('BlogId', $request->blogId)
-                        ->update([
-                            'BlogTitle' => $request->title,
-                            'BlogContent' => $request->content,
-                            'BlogCategoryId' => $fetchCategoryId,
-                            'BlogTags' => $request->tags,
-                            'BlogImage' => $newImgName,
-                        ]);
-                } //
-                else {
-                    $insertPost = DB::table('blog')
-                        ->where('BlogId', $request->blogId)
-                        ->update([
-                            'BlogTitle' => $request->title,
-                            'BlogContent' => $request->content,
-                            'BlogCategoryId' => $fetchCategoryId,
-                            'BlogTags' => $request->tags
-                        ]);
-                }
-
-
-                if ($insertPost) {
-                    return response()->json([
-                        'status' => 1,
-                        'msg' => 'Post Updated Successfully'
-                    ]);
-                }
-            } //
-            else {
-                return response()->json([
-                    'status' => 0,
-                    'error' => 'Unable To Find Category Please Try Later.'
-                ]);
-            }
-        } //
-        else {
-            return response()->json([
-                'status' => 0,
-                'error' => 'Please Enter Valid Data.'
             ]);
         }
     }

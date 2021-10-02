@@ -93,15 +93,18 @@
 
 
                     <a href="" class="edit-box box" data-id="{{ $data->BlogId }}">
-                        <span style="background-color: #1ABD9B" class="icon"><i class="fas fa-pencil"></i></span>
+                        <span style="background-color: #1ABD9B" class="icon"><i
+                                class="fas fa-pencil"></i></span>
                         <span class="name">Edit</span>
                     </a>
                     <a href="" class="view-box box" data-id="{{ $data->BlogId }}">
-                        <span style="background-color: #2980B9" class="icon"><i class="fas fa-eye"></i></span>
+                        <span style="background-color: #2980B9" class="icon"><i
+                                class="fas fa-eye"></i></span>
                         <span class="name">View</span>
                     </a>
                     <a href="" class="delete-box box" data-id="{{ $data->BlogId }}">
-                        <span style="background-color: #E54D3C" class="icon"><i class="fas fa-trash"></i></span>
+                        <span style="background-color: #E54D3C" class="icon"><i
+                                class="fas fa-trash"></i></span>
                         <span class="name">Trash</span>
                     </a>
                     <a href="" class="box" data-id="{{ $data->BlogId }}">
@@ -614,7 +617,6 @@
                                 title: "Someething Wan't Wrong"
                             });
                         }
-
                     }
                 });
             } //

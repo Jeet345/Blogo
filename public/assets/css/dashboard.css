@@ -850,4 +850,329 @@ body {
 .page-container .content-body .content .update-form-container .form-box .form-footer .buttons .reset-btn:hover {
   background-color: #f1f1f1;
 }
+
+.page-container .content-body .content .comment-page {
+  margin-top: 30px;
+  padding: 50px;
+}
+
+.page-container .content-body .content .comment-page .comment-list-box .comment-card {
+  width: 100%;
+  border: 1px solid #cecece;
+  border-radius: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 20px 17px;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+  margin-bottom: 15px;
+}
+
+.page-container .content-body .content .comment-page .comment-list-box .comment-card .left-side {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.page-container .content-body .content .comment-page .comment-list-box .comment-card .left-side .user-image {
+  min-width: 65px;
+  min-height: 65px;
+  overflow: hidden;
+  -ms-flex-item-align: start;
+      -ms-grid-row-align: start;
+      align-self: start;
+  border-radius: 100%;
+}
+
+.page-container .content-body .content .comment-page .comment-list-box .comment-card .left-side .user-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.page-container .content-body .content .comment-page .comment-list-box .comment-card .left-side .user-info {
+  margin-left: 15px;
+  line-height: 1.7;
+}
+
+.page-container .content-body .content .comment-page .comment-list-box .comment-card .left-side .user-info .user-line {
+  font-weight: normal;
+  font-size: 1rem;
+  color: grey;
+}
+
+.page-container .content-body .content .comment-page .comment-list-box .comment-card .left-side .user-info .user-line .userName {
+  color: black;
+  font-weight: 600;
+}
+
+.page-container .content-body .content .comment-page .comment-list-box .comment-card .left-side .user-info .user-line a {
+  text-decoration: none;
+  color: blue;
+}
+
+.page-container .content-body .content .comment-page .comment-list-box .comment-card .left-side .user-info .comment-content {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.page-container .content-body .content .comment-page .comment-list-box .comment-card .right-side .comment-date {
+  display: block;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+  margin-right: 15px;
+  padding-left: 10px;
+}
+
+.page-container .content-body .content .comment-page .comment-list-box .comment-card .right-side .hover-menu {
+  display: none;
+  padding-left: 10px;
+}
+
+.page-container .content-body .content .comment-page .comment-list-box .comment-card .right-side .hover-menu li {
+  list-style: none;
+  display: inline-block;
+}
+
+.page-container .content-body .content .comment-page .comment-list-box .comment-card .right-side .hover-menu li a {
+  display: -ms-grid;
+  display: grid;
+  width: 45px;
+  height: 45px;
+  place-items: center;
+  border-radius: 100%;
+  text-decoration: none;
+  -webkit-transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
+  font-size: 1.2rem;
+  color: #505050;
+}
+
+.page-container .content-body .content .comment-page .comment-list-box .comment-card .right-side .hover-menu li a:hover, .page-container .content-body .content .comment-page .comment-list-box .comment-card .right-side .hover-menu li a:focus {
+  background-color: rgba(189, 189, 255, 0.408);
+  color: black;
+}
+
+.page-container .content-body .content .comment-page .comment-list-box .comment-card:hover {
+  -webkit-box-shadow: 0px 0px 14px -4px rgba(126, 126, 126, 0.65);
+          box-shadow: 0px 0px 14px -4px rgba(126, 126, 126, 0.65);
+}
+
+.page-container .content-body .content .comment-page .comment-list-box .comment-card:hover .right-side .comment-date {
+  display: none;
+}
+
+.page-container .content-body .content .comment-page .comment-list-box .comment-card:hover .right-side .hover-menu {
+  display: block;
+}
+
+.page-container .content-body .content .comment-page .load-more-button {
+  display: table;
+  margin: auto;
+  margin-top: 50px;
+}
+
+.page-container .content-body .content .comment-page .load-more-button button {
+  padding: 12px 32px;
+  background: none;
+  border: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #603ef6;
+  border-radius: 5px;
+  color: white;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+  -webkit-box-shadow: 0px 0px 15px -5px #4822f0b2;
+          box-shadow: 0px 0px 15px -5px #4822f0b2;
+}
+
+.page-container .content-body .content .comment-page .load-more-button button:enabled:hover, .page-container .content-body .content .comment-page .load-more-button button:enabled:focus {
+  -webkit-transform: translateY(-1px);
+          transform: translateY(-1px);
+  background-color: #4722f0;
+}
+
+.page-container .content-body .content .comment-page .load-more-button button:disabled {
+  cursor: not-allowed;
+}
+
+.page-container .content-body .content .comment-page .load-more-button button:disabled i {
+  display: block;
+}
+
+.page-container .content-body .content .comment-page .load-more-button button i {
+  margin-left: 10px;
+  font-size: 1rem;
+  display: none;
+}
+
+.page-container .content-body .content .setting-page {
+  width: 75%;
+  margin-left: 120px;
+  margin-bottom: 120px;
+  margin-top: 80px;
+}
+
+.page-container .content-body .content .setting-page .profile-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.page-container .content-body .content .setting-page .profile-box .img label {
+  max-width: 100px;
+  max-height: 100px;
+  cursor: pointer;
+  border-radius: 100%;
+  display: block;
+  overflow: hidden;
+  -webkit-box-shadow: 0px 0px 28px -13px rgba(0, 0, 0, 0.75);
+          box-shadow: 0px 0px 28px -13px rgba(0, 0, 0, 0.75);
+}
+
+.page-container .content-body .content .setting-page .profile-box .img label img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.page-container .content-body .content .setting-page .profile-box .profile {
+  margin-left: 30px;
+}
+
+.page-container .content-body .content .setting-page .profile-box .profile h2 {
+  text-transform: capitalize;
+  font-size: 1.3rem;
+  letter-spacing: 0.6px;
+  font-weight: 600;
+}
+
+.page-container .content-body .content .setting-page .profile-box .profile h4 {
+  font-weight: normal;
+  font-size: 0.9rem;
+  color: grey;
+}
+
+.page-container .content-body .content .setting-page .input-container {
+  margin-top: 60px;
+}
+
+.page-container .content-body .content .setting-page .input-container .input-box {
+  display: -ms-grid;
+  display: grid;
+  grid-row-gap: 40px;
+  grid-column-gap: 55px;
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+}
+
+.page-container .content-body .content .setting-page .input-container .input-box .input-filed input,
+.page-container .content-body .content .setting-page .input-container .input-box .input-filed textarea {
+  width: 100%;
+  background: none;
+  border: none;
+  text-align: center;
+  border: 1px solid #dddddd;
+  border-radius: 7px;
+  padding: 6px 15px;
+  font-size: 1rem;
+  background-color: #f0f0f0;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+.page-container .content-body .content .setting-page .input-container .input-box .input-filed input:focus,
+.page-container .content-body .content .setting-page .input-container .input-box .input-filed textarea:focus {
+  background-color: transparent;
+}
+
+.page-container .content-body .content .setting-page .input-container .input-box .input-filed:last-child {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 3;
+  grid-column: 1 / 4;
+}
+
+.page-container .content-body .content .setting-page .input-container .input-box .input-filed:last-child textarea {
+  height: 130px;
+  text-align: left;
+  padding: 15px 20px;
+  resize: vertical;
+}
+
+.page-container .content-body .content .setting-page .input-container .input-box .input-filed h4 {
+  padding: 4px 7px;
+  font-weight: 500;
+  font-size: 0.9rem;
+  letter-spacing: 0.3px;
+}
+
+.page-container .content-body .content .setting-page .input-container .submit-btn {
+  margin-top: 50px;
+  padding: 10px 32px;
+  background: none;
+  border: none;
+  background-color: #603ef6;
+  border-radius: 5px;
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+  text-transform: capitalize;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+  -webkit-box-shadow: 0px 0px 15px -5px #4822f0b2;
+          box-shadow: 0px 0px 15px -5px #4822f0b2;
+}
+
+.page-container .content-body .content .setting-page .input-container .submit-btn:enabled:hover, .page-container .content-body .content .setting-page .input-container .submit-btn:enabled:focus {
+  -webkit-transform: translateY(-1px);
+          transform: translateY(-1px);
+  background-color: #4722f0;
+}
+
+.page-container .content-body .content .setting-page .input-container .submit-btn:disabled {
+  cursor: not-allowed;
+}
+
+.page-container .content-body .content .setting-page .input-container .submit-btn:disabled i {
+  display: block;
+}
+
+.page-container .content-body .content .setting-page .input-container .submit-btn i {
+  margin-left: 10px;
+  font-size: 1rem;
+  display: none;
+}
 /*# sourceMappingURL=dashboard.css.map */

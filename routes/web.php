@@ -1,11 +1,18 @@
 <?php
 
+use App\Http\Controllers\admin\indexController;
+use App\Http\Controllers\AuthorController;
+use App\Http\Controllers\BlogController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\dashboard\CommentController;
+use App\Http\Controllers\dashboard\FavoriteController;
 use App\Http\Controllers\dashboard\PostsController;
+use App\Http\Controllers\Dashboard\SettingController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\TagController;
 use Illuminate\Support\Facades\Route;
-use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,19 +32,16 @@ Route::group(['middleware' => ['clearCache']], function () {
     Route::get('/home', function () {
         return redirect('/');
     });
-    Route::get('/category', function () {
-        return view('category');
-    });
-    Route::get('/blog', function () {
-        return view('blog');
-    });
-    Route::get('/author/{authorname}', function () {
-        return view('authorName');
-    });
-    Route::get('/tag/{tagname}', function () {
-        return view('tagName');
+    Route::get('/category/{categoryName}', [CategoryController::class, 'index']);
+
+    Route::get('/blog/{BlogId}', [BlogController::class, 'index']);
+    Route::post('/blog/submitComment', [BlogController::class, 'commentSubmit']);
+    Route::get('/blog/submitComment', function () {
+        return abort(404);
     });
 
+    Route::get('/author/{authorId}', [AuthorController::class, 'index']);
+    Route::get('/tag/{tagName}', [TagController::class, 'index']);
 
 
 
@@ -83,33 +87,94 @@ Route::group(['middleware' => ['clearCache']], function () {
         Route::get('/dashboard/viewPost/published', function () {
             return abort(404);
         });
-
         Route::post('/dashboard/viewPost/draft', [PostsController::class, 'unpublishPost']);
         Route::get('/dashboard/viewPost/draft', function () {
             return abort(404);
         });
-
         Route::post('/dashboard/viewPost/delete', [PostsController::class, 'deletePost']);
         Route::get('/dashboard/viewPost/delete', function () {
             return abort(404);
         });
-
         Route::post('/dashboard/viewPost/loadUpdate', [PostsController::class, 'loadUpdate']);
         Route::get('/dashboard/viewPost/loadUpdate', function () {
             return abort(404);
         });
-
         Route::post('/dashboard/viewPost/updatePost', [PostsController::class, 'updatePost']);
         Route::get('/dashboard/viewPost/updatePost', function () {
             return abort(404);
         });
-
         Route::post('/dashboard/viewPost/loadMore', [PostsController::class, 'loadMore']);
         Route::get('/dashboard/viewPost/loadMore', function () {
             return abort(404);
         });
 
         Route::get('/dashboard/viewDashboard', [PostsController::class, 'DashboardView']);
-        // add 
+
+
+        // view comment 
+        Route::get('/dashboard/viewComment', [CommentController::class, 'index']);
+        Route::post('/dashboard/viewComment/loadMore', [CommentController::class, 'loadMore']);
+        Route::get('/dashboard/viewComment/loadMore', function () {
+            return abort(404);
+        });
+
+        Route::post('/dashboard/viewComment/removeContent', [CommentController::class, 'removeContent']);
+        Route::get('/dashboard/viewComment/removeContent', function () {
+            return abort(404);
+        });
+
+        Route::post('/dashboard/viewComment/spamComment', [CommentController::class, 'spamComment']);
+        Route::get('/dashboard/viewComment/spamComment', function () {
+            return abort(404);
+        });
+
+        Route::post('/dashboard/viewComment/notSpamComment', [CommentController::class, 'notSpamComment']);
+        Route::get('/dashboard/viewComment/notSpamComment', function () {
+            return abort(404);
+        });
+
+        Route::post('/dashboard/viewComment/deleteComment', [CommentController::class, 'deleteCommentphp']);
+        Route::get('/dashboard/viewComment/deleteComment', function () {
+            return abort(404);
+        });
+
+
+        // view setting
+        Route::get('/dashboard/viewSetting', [SettingController::class, 'index']);
+
+        // setting form submit
+        Route::post('dashboard/viewSetting/submitForm', [SettingController::class, 'submitForm']);
+        Route::get('dashboard/viewSetting/submitForm', function () {
+            return abort(404);
+        });
+
+        // view Favorite
+        Route::get('/dashboard/viewFavorite', [FavoriteController::class, 'index']);
+
+        Route::post('/dashboard/viewFavorite/published', [PostsController::class, 'publishPost']);
+        Route::get('/dashboard/viewFavorite/published', function () {
+            return abort(404);
+        });
+        Route::post('/dashboard/viewFavorite/draft', [PostsController::class, 'unpublishPost']);
+        Route::get('/dashboard/viewFavorite/draft', function () {
+            return abort(404);
+        });
+        Route::post('/dashboard/viewFavorite/delete', [PostsController::class, 'deletePost']);
+        Route::get('/dashboard/viewFavorite/delete', function () {
+            return abort(404);
+        });
+        Route::post('/dashboard/viewFavorite/loadMore', [PostsController::class, 'loadMore']);
+        Route::get('/dashboard/viewFavorite/loadMore', function () {
+            return abort(404);
+        });
+    });
+
+
+    // admin site
+
+
+    Route::group(['middleware' => ['adminCheck']], function () {
+        Route::get('/admin', [indexController::class, 'index']);
+        Route::post('/admin/loginRequest', [indexController::class, 'login']);
     });
 });

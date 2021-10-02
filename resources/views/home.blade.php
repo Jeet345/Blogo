@@ -43,9 +43,9 @@
                         <img src="{{ asset('assets/images/uploadImage/' . $data->BlogImage) }}">
                         <div class="overlayer"></div>
                     </a>
- 
+
                     <div class="title-box">
-                        <a href='category' class="category">{{ $data->CategoryName }}</a>
+                        <a href='category/{{ $data->CategoryName }}' class="category">{{ $data->CategoryName }}</a>
                         <h2 class="title">
                             <a href="/blog/{{ $data->BlogId }}">
                                 {{ $data->BlogTitle }}
@@ -90,7 +90,7 @@
 
             <div class="cate-card">
 
-                <a href="cate" class="box">
+                <a href="category/gadgets" class="box">
 
                     <img src="{{ asset('assets/images/gadgets.jpg') }}">
 
@@ -109,7 +109,7 @@
 
             <div class="cate-card">
 
-                <a href="cate" class="box">
+                <a href="category/marketing" class="box">
 
                     <img src="{{ asset('assets/images/marketing.jpg') }}">
 
@@ -128,7 +128,7 @@
 
             <div class="cate-card">
 
-                <a href="cate" class="box">
+                <a href="category/trends" class="box">
 
 
                     <img src="{{ asset('assets/images/trend.jpg') }}">

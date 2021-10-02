@@ -1,0 +1,172 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap");
+* {
+  font-family: "Roboto", sans-serif;
+  margin: 0px;
+  padding: 0px;
+  outline: none;
+}
+
+body {
+  background-color: #2148c0;
+}
+
+body .container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 380px;
+  padding-bottom: 30px;
+}
+
+body .container .title h1 {
+  color: white;
+  display: table;
+  margin: auto;
+  font-weight: 600;
+  font-size: 1.9rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+body .container form .inputs {
+  margin-top: 40px;
+}
+
+body .container form .inputs .input-filed {
+  border: 1px solid white;
+  padding: 13px 20px;
+  border-radius: 5px;
+  margin-top: 20px;
+  font-size: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  grid-gap: 15px;
+}
+
+body .container form .inputs .input-filed span {
+  color: #f7f7f7;
+}
+
+body .container form .inputs .input-filed input {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  background: none;
+  border: none;
+  font-size: 1rem;
+  color: white;
+}
+
+body .container form .inputs .input-filed input::-webkit-input-placeholder {
+  text-transform: uppercase;
+  color: #f7f7f7;
+  font-weight: 300;
+  letter-spacing: 1px;
+  font-size: 0.95rem;
+}
+
+body .container form .inputs .input-filed input:-ms-input-placeholder {
+  text-transform: uppercase;
+  color: #f7f7f7;
+  font-weight: 300;
+  letter-spacing: 1px;
+  font-size: 0.95rem;
+}
+
+body .container form .inputs .input-filed input::-ms-input-placeholder {
+  text-transform: uppercase;
+  color: #f7f7f7;
+  font-weight: 300;
+  letter-spacing: 1px;
+  font-size: 0.95rem;
+}
+
+body .container form .inputs .input-filed input::placeholder {
+  text-transform: uppercase;
+  color: #f7f7f7;
+  font-weight: 300;
+  letter-spacing: 1px;
+  font-size: 0.95rem;
+}
+
+body .container form .inputs .error {
+  color: #f5f5f5;
+  padding: 5px;
+  font-weight: normal;
+  font-size: 0.9rem;
+}
+
+body .container form .login-btn {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 12px;
+  text-transform: uppercase;
+  color: #2148c0;
+  background-color: white;
+  margin-top: 30px;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+  border-radius: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+  -webkit-transition: background 0.3s;
+  transition: background 0.3s;
+}
+
+body .container form .login-btn i {
+  margin-left: 15px;
+  display: none;
+}
+
+body .container form .login-btn:enabled:hover {
+  background-color: #f5f5f5;
+}
+
+body .container form .login-btn:enabled:active {
+  -webkit-transform: translateY(1px);
+          transform: translateY(1px);
+}
+
+body .container form .login-btn:disabled {
+  cursor: not-allowed;
+  background-color: #f5f5f5;
+}
+
+body .container form .login-btn:disabled i {
+  display: block;
+}
+
+body .container form .forgot-link {
+  text-align: right;
+  margin-top: 10px;
+}
+
+body .container form .forgot-link a {
+  color: white;
+  text-decoration: none;
+  letter-spacing: 0.4px;
+  font-size: 0.95rem;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+body .container form .forgot-link a:hover {
+  color: #f5f5f5;
+}
+/*# sourceMappingURL=admin.css.map */

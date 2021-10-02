@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <title>AuthorName -- Blogo</title>
+    <title>{{ $authorData->AuthorName }} -- Blogo</title>
 
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/fontawesome/css/all.min.css') }}">
@@ -32,21 +32,28 @@
                     <img src="{{ asset('assets/images/author2.jpg') }}" alt="">
                 </div>
                 <div class="author-meta">
-                    <h1 class="name">Hannah Weastell</h1>
-                    <p class="city">from Berlin</p>
+                    <h1 class="name">{{ $authorData->AuthorName }}</h1>
+                    <p class="city">from {{ $authorData->AuthorCity }}</p>
 
                     <div class="line"></div>
 
                     <p class="about-author">
-                        Do not grieve for it, I say, than the substance of this later on viderouid to him, you left
-                        town, if not you, in any way, he was speaking, to understand, what he was saying.
+
+                        {{ Str::limit($authorData->AuthorBio, 200) }}
+
                     </p>
 
                 </div>
             </div>
             <div class="right-side-box">
                 <div class="post-count">
-                    <h1>4</h1>
+                    <h1>
+                        @isset($postData)
+                            {{ $postData->count() }}
+                        @else
+                            0
+                        @endisset
+                    </h1>
                     <p>Posts</p>
                 </div>
                 <div class="social-icon">
@@ -62,126 +69,58 @@
         <div class="content-body">
             <div class="two-col-container">
 
-                <div class="blog-body">
+                @if (isset($postData))
 
-                    <div class="blog-card">
+                    <div class="blog-body">
 
-                        <a href="img" class="img">
-                            <img src="{{ asset('assets/images/camera.jpg') }}" alt="">
-                        </a>
+                        @foreach ($postData as $data)
 
-                        <div class="blog-info">
+                            <div class="blog-card">
 
-                            <a href="#" class="category">Trends</a>
-
-                            <div class="blog-title">
-                                <a href="title">
-                                    The biggest and most awesome camera rumors of the year
+                                <a href="/blog/{{ $data->BlogId }}" class="img">
+                                    <img src="{{ asset("assets/images/uploadImage/$data->BlogImage") }}" alt="">
                                 </a>
+
+                                <div class="blog-info">
+
+                                    <a href="/category/{{ $data->CategoryName }}"
+                                        class="category">{{ $data->CategoryName }}</a>
+
+                                    <div class="blog-title">
+                                        <a href="/blog/{{ $data->BlogId }}">
+                                            {{ $data->BlogTitle }}
+                                        </a>
+                                    </div>
+
+                                    <h4 class="blog-date">{{ $data->BlogPostDate }} - 5 mins read</h4>
+
+                                    <div class="blog-desc">
+                                        <p>
+                                            {{ Str::limit($data->BlogContent, 120) }}
+                                        </p>
+                                    </div>
+
+                                </div>
+
+
                             </div>
 
-                            <h4 class="blog-date">aug 14 2015 - 5 mins read</h4>
-
-                            <div class="blog-desc">
-                                <p>More off this less hello salamander lied porpoise much over tightly circa horse taped
-                                    so
-                                    innocuously outside crud mightily rigorous… </p>
-                            </div>
-
-                        </div>
-
+                        @endforeach
 
                     </div>
 
-                    <div class="blog-card">
+                @else
 
-                        <a href="img" class="img">
-                            <img src="{{ asset('assets/images/phone.jpg') }}" alt="">
-                        </a>
+                    <h3 style="display:table;margin: auto;color: grey">{{ $message }}
+                    </h3>
 
-                        <div class="blog-info">
-
-                            <a href="#" class="category">Trends</a>
-
-                            <div class="blog-title">
-                                <a href="title">
-                                    The biggest and most awesome camera rumors of the year
-                                </a>
-                            </div>
-
-                            <h4 class="blog-date">aug 14 2015 - 5 mins read</h4>
-
-                            <div class="blog-desc">
-                                <p>More off this less hello salamander lied porpoise much over tightly circa horse taped
-                                    so
-                                    innocuously outside crud mightily rigorous… </p>
-                            </div>
-
-                        </div>
+                @endif
 
 
-                    </div>
-
-                    <div class="blog-card">
-
-                        <a href="img" class="img">
-                            <img src="{{ asset('assets/images/phone.jpg') }}" alt="">
-                        </a>
-
-                        <div class="blog-info">
-
-                            <a href="#" class="category">Trends</a>
-
-                            <div class="blog-title">
-                                <a href="title">
-                                    The biggest and most awesome camera rumors of the year
-                                </a>
-                            </div>
-
-                            <h4 class="blog-date">aug 14 2015 - 5 mins read</h4>
-
-                            <div class="blog-desc">
-                                <p>More off this less hello salamander lied porpoise much over tightly circa horse taped
-                                    so
-                                    innocuously outside crud mightily rigorous… </p>
-                            </div>
-
-                        </div>
 
 
-                    </div>
-
-                    <div class="blog-card">
-
-                        <a href="img" class="img">
-                            <img src="{{ asset('assets/images/phone.jpg') }}" alt="">
-                        </a>
-
-                        <div class="blog-info">
-
-                            <a href="#" class="category">Trends</a>
-
-                            <div class="blog-title">
-                                <a href="title">
-                                    The biggest and most awesome camera rumors of the year
-                                </a>
-                            </div>
-
-                            <h4 class="blog-date">aug 14 2015 - 5 mins read</h4>
-
-                            <div class="blog-desc">
-                                <p>More off this less hello salamander lied porpoise much over tightly circa horse taped
-                                    so
-                                    innocuously outside crud mightily rigorous… </p>
-                            </div>
-
-                        </div>
 
 
-                    </div>
-
-
-                </div>
 
             </div>
         </div>

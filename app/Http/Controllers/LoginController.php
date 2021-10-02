@@ -36,7 +36,7 @@ class LoginController extends Controller
 
                 // verify password
                 if (Hash::check($request->password, $fetchEmail->AuthorPassword)) {
-                    if ($fetchEmail->AuthorStatus === 1) {
+                    if ($fetchEmail->AuthorStatus === 1 || $fetchEmail->AuthorStatus === 2) {
 
                         $request->session()->put('author', $fetchEmail->AuthorId);
 

@@ -54,6 +54,9 @@ class Kernel extends HttpKernel
         'dashboardCheck' => [
             \App\Http\Middleware\dashboardMiddleware::class,
         ],
+        'adminCheck' => [
+            \App\Http\Middleware\AdminMiddleware::class,
+        ],
     ];
 
     /**

@@ -28,8 +28,8 @@
 
         <div class="heading">
             <h4 class="title">category</h4>
-            <h1 class="cat-name">Gadgets</h1>
-            <h1 class="background">category</h1>
+            <h1 class="cat-name">{{ $postData[0]->CategoryName }}</h1>
+            <h1 class="background">category</h1> 
         </div>
 
 
@@ -37,127 +37,39 @@
 
             <div class="blog-list">
 
-                <div class="list-card">
+                @foreach ($postData as $data)
 
-                    <a href="img" class="img">
-                        <img src="{{ asset('assets/images/girl.jpg') }}" alt="">
-                    </a>
+                    <div class="list-card">
 
-                    <div class="blog-info">
+                        <a href="img" class="img">
+                            <img src="{{ asset('assets/images/uploadImage/' . $data->BlogImage . '') }}" alt="">
+                        </a>
 
-                        <div class="first-line">
-                            <a href="" class="blog-date">may 15 2018</a>
-                            <a href="" class="category">Gadgets</a>
-                        </div>
+                        <div class="blog-info">
 
-                        <div class="title">
-                            <a href="">Tupac tribute murals and graffiti from around the world</a>
-                        </div>
+                            <div class="first-line">
+                                <a href="" class="blog-date">{{ $data->BlogPostDate }}</a>
+                                <a href="javascript:void(0)" class="category">{{ $data->CategoryName }}</a>
+                            </div>
 
-                        <div class="blog-desc">
-                            <p>More off this less hello salamander lied porpoise much over tightly circa
-                                horse taped so…</p>
-                        </div>
+                            <div class="title">
+                                <a href="">{{ $data->BlogTitle }}</a>
+                            </div>
 
-                        <div class="btn">
-                            <button>read more</button>
-                        </div>
+                            <div class="blog-desc">
+                                {{ Str::limit($data->BlogContent, 100) }}
+                            </div>
 
-                    </div>
+                            <div class="btn">
+                                <button>read more</button>
+                            </div>
 
-                </div>
-
-                <div class="list-card">
-
-                    <a href="img" class="img">
-                        <img src="{{ asset('assets/images/girl.jpg') }}" alt="">
-                    </a>
-
-                    <div class="blog-info">
-
-                        <div class="first-line">
-                            <a href="" class="blog-date">may 15 2018</a>
-                            <a href="" class="category">Gadgets</a>
-                        </div>
-
-                        <div class="title">
-                            <a href="">Tupac tribute murals and graffiti from around the world</a>
-                        </div>
-
-                        <div class="blog-desc">
-                            <p>More off this less hello salamander lied porpoise much over tightly circa
-                                horse taped so…</p>
-                        </div>
-
-                        <div class="btn">
-                            <button>read more</button>
                         </div>
 
                     </div>
 
-                </div>
 
-
-                <div class="list-card">
-
-                    <a href="img" class="img">
-                        <img src="{{ asset('assets/images/girl.jpg') }}" alt="">
-                    </a>
-
-                    <div class="blog-info">
-
-                        <div class="first-line">
-                            <a href="" class="blog-date">may 15 2018</a>
-                            <a href="" class="category">Gadgets</a>
-                        </div>
-
-                        <div class="title">
-                            <a href="">Tupac tribute murals and graffiti from around the world</a>
-                        </div>
-
-                        <div class="blog-desc">
-                            <p>More off this less hello salamander lied porpoise much over tightly circa
-                                horse taped so…</p>
-                        </div>
-
-                        <div class="btn">
-                            <button>read more</button>
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <div class="list-card">
-
-                    <a href="img" class="img">
-                        <img src="{{ asset('assets/images/girl.jpg') }}" alt="">
-                    </a>
-
-                    <div class="blog-info">
-
-                        <div class="first-line">
-                            <a href="" class="blog-date">may 15 2018</a>
-                            <a href="" class="category">Gadgets</a>
-                        </div>
-
-                        <div class="title">
-                            <a href="">Tupac tribute murals and graffiti from around the world</a>
-                        </div>
-
-                        <div class="blog-desc">
-                            <p>More off this less hello salamander lied porpoise much over tightly circa
-                                horse taped so…</p>
-                        </div>
-
-                        <div class="btn">
-                            <button>read more</button>
-                        </div>
-
-                    </div>
-
-                </div>
+                @endforeach
 
 
             </div>

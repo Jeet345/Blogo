@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use PDO;
 
 class HomeController extends Controller
 {
@@ -13,6 +11,7 @@ class HomeController extends Controller
     {
 
         $bannerData = DB::table('blog')
+            ->where('BlogStatus', '1')
             ->join('category', 'blog.BlogCategoryId', '=', 'category.CategoryId')
             ->limit(6)
             ->get();
@@ -20,6 +19,7 @@ class HomeController extends Controller
 
         $trendData = DB::table('blog')
             ->join('category', 'blog.BlogCategoryId', '=', 'category.CategoryId')
+            ->where('BlogStatus', '1')
             ->where('CategoryName', '=', 'trends')
             ->orWhere('CategoryName', '=', 'news')
             ->limit(2)
@@ -27,10 +27,11 @@ class HomeController extends Controller
 
         $gadgetData = DB::table('blog')
             ->join('category', 'blog.BlogCategoryId', '=', 'category.CategoryId')
+            ->where('BlogStatus', '1')
             ->where('CategoryName', '=', 'gadgets')
             ->limit(6)
             ->get();
- 
+
         return view(
             'home',
             [

@@ -60,7 +60,7 @@
                             </span>
                             <h4>Comments</h4>
                         </a></li>
-                    <li><a href="viewTags">
+                    <li><a href="viewFavorite">
                             <span class="icon">
                                 <i class="far fa-heart"></i>
                             </span>

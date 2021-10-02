@@ -15,16 +15,20 @@
         integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
 
 </head>
 
 <body>
 
 
+
     <x-header />
 
 
-    <img src="{{ asset('assets/images/camera.jpg') }}" class="blog-header-img" alt="">
+    <img src="{{ asset("assets/images/uploadImage/$blogData->BlogImage") }}" class="blog-header-img" alt="">
 
 
 
@@ -33,15 +37,16 @@
 
             <div class="heading-overlay">
 
-                <a href="" class="category">trends</a>
+                <a href="/category/{{ $blogData->CategoryName }}"
+                    class="category">{{ $blogData->CategoryName }}</a>
 
-                <h1 class="title">The biggest and most awesome camera rumors of the year</h1>
+                <h1 class="title">{{ $blogData->BlogTitle }}</h1>
 
                 <h5 class="blog-info">
 
-                    <a href="author" class="blog-author">by james doe</a>
+                    <a href="author" class="blog-author">by {{ $blogData->AuthorName }}</a>
                     &nbsp;-&nbsp;
-                    <span class="blog-date">may 14 2018</span>
+                    <span class="blog-date">{{ $blogData->BlogPostDate }}</span>
                     &nbsp;-&nbsp;
                     <span class="read-time">5 min read</span>
 
@@ -68,88 +73,26 @@
                 <div class="blog">
 
                     <div class="blog-data">
-                        <p style="font-size: 1.3rem">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            Repellendus
-                            dignissimos velit ullam porro laboriosam, magni rem corrupti odio necessitatibus eum quos?
-                            Obcaecati
-                            ut
-                            dolore facilis numquam laboriosam eaque magnam iure!</p>
-                        <br>
-                        <p style="font-size: 1.3rem">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            Repellendus
-                            dignissimos velit ullam porro laboriosam, magni rem corrupti odio necessitatibus eum quos?
-                            Obcaecati
-                            ut
-                            dolore facilis numquam laboriosam eaque magnam iure!</p>
-                        <br>
-
-                        <p style="font-size: 1.3rem">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            Repellendus
-                            dignissimos velit ullam porro laboriosam, magni rem corrupti odio necessitatibus eum quos?
-                            Obcaecati
-                            ut
-                            dolore facilis numquam laboriosam eaque magnam iure!</p>
-                        <br>
-                        <p style="font-size: 1.3rem">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            Repellendus
-                            dignissimos velit ullam porro laboriosam, magni rem corrupti odio necessitatibus eum quos?
-                            Obcaecati
-                            ut
-                            dolore facilis numquam laboriosam eaque magnam iure!</p>
-                        <br>
-                        <p style="font-size: 1.3rem">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            Repellendus
-                            dignissimos velit ullam porro laboriosam, magni rem corrupti odio necessitatibus eum quos?
-                            Obcaecati
-                            ut
-                            dolore facilis numquam laboriosam eaque magnam iure!</p>
-                        <br>
-
-                        <p style="font-size: 1.3rem">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            Repellendus
-                            dignissimos velit ullam porro laboriosam, magni rem corrupti odio necessitatibus eum quos?
-                            Obcaecati
-                            ut
-                            dolore facilis numquam laboriosam eaque magnam iure!</p>
-                        <br>
-                        <p style="font-size: 1.3rem">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            Repellendus
-                            dignissimos velit ullam porro laboriosam, magni rem corrupti odio necessitatibus eum quos?
-                            Obcaecati
-                            ut
-                            dolore facilis numquam laboriosam eaque magnam iure!</p>
-                        <br>
-                        <p style="font-size: 1.3rem">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            Repellendus
-                            dignissimos velit ullam porro laboriosam, magni rem corrupti odio necessitatibus eum quos?
-                            Obcaecati
-                            ut
-                            dolore facilis numquam laboriosam eaque magnam iure!</p>
-                        <br>
-
-                        <p style="font-size: 1.3rem">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            Repellendus
-                            dignissimos velit ullam porro laboriosam, magni rem corrupti odio necessitatibus eum quos?
-                            Obcaecati
-                            ut
-                            dolore facilis numquam laboriosam eaque magnam iure!</p>
-                        <br>
-
+                        {!! $blogData->BlogContent !!}
                     </div>
 
                     <div class="blog-footer">
 
                         <ul class="tags">
-                            <li><a href="">diy</a></li>
-                            <li><a href="">fashion</a></li>
-                            <li><a href="">featured</a></li>
+
+                            @foreach (explode(', ', $blogData->BlogTags) as $tag)
+
+                                <li><a href="/tag/{{ $tag }}">{{ $tag }}</a></li>
+
+                            @endforeach
+
                         </ul>
 
                         <ul class="links">
                             <li class="likes liked">
                                 <a href="">
                                     <i class="fas fa-heart"></i>
-                                    143
+                                    {{ $blogData->BlogLikes }}
                                 </a>
                             </li>
                             <li><a href=""><i class="fab fa-facebook-f"></i></a></li>
@@ -165,14 +108,19 @@
                             <img src="{{ asset('assets/images/author.jpg') }}" alt="">
                         </div>
                         <div class="name">
-                            <a href="">James Doe</a>
+                            <a href="">{{ $blogData->AuthorName }}</a>
                         </div>
 
                         <div class="about-author">
                             <p>
-                                Orion Pax is constantly, if not always depicted as having strong moral character,
-                                excellent leadership, and sound decision-making skills, and an advanced
-                                extraterrestrial.
+                                @if ($blogData->AuthorBio != null)
+                                    {{ $blogData->AuthorBio }}
+                                @else
+                                    Orion Pax is constantly, if not always depicted as having strong moral character,
+                                    excellent leadership, and sound decision-making skills, and an advanced
+                                    extraterrestrial.
+                                @endif
+
                             </p>
                         </div>
                         <ul class="social-links">
@@ -247,97 +195,55 @@
 
                 <div class="comment-heading">
                     <h1>
-                        <span>3</span>
+                        @if ($commentData)
+                            <span>{{ $commentData->count() }}</span>
+                        @else
+                            <span>0</span>
+                        @endif
                         Comments
                     </h1>
                 </div>
 
-                <div class="comment-box">
 
-                    <div class="comment-card">
-                        <div class="img">
-                            <img src="{{ asset('assets/images/user.jpg') }}">
-                        </div>
-                        <div class="comment-data">
-                            <div class="comment-meta">
-                                <h1 class="name">Groot Will</h1>
-                                <h5 class="comment-time">3 years ago</h5>
+                @if ($commentData)
+
+                    <div class="comment-box">
+
+                        @foreach ($commentData as $data)
+
+                            <div class="comment-card">
+                                <div class="img">
+                                    <img src="{{ asset('assets/images/user.jpg') }}">
+                                </div>
+                                <div class="comment-data">
+                                    <div class="comment-meta">
+                                        <h1 class="name">{{ $data->UserName }}</h1>
+                                        <h5 class="comment-time">{{ $data->CommentDate }}</h5>
+                                    </div>
+                                    <p>
+                                        @if ($data->CommentStatus == 0)
+                                            This comment has been removed by the author.
+                                        @else
+                                            {{ $data->UserComment }}
+                                        @endif
+                                    </p>
+                                </div>
                             </div>
-                            <p>
-                                That far ground rat pure from newt far panther crane lorikeet overlay alas cobra across
-                                much gosh less goldfinch ruthlessly alas examined and that more and the ouch jeez.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="comment-card">
-                        <div class="img">
-                            <img src="{{ asset('assets/images/user.jpg') }}">
-                        </div>
-                        <div class="comment-data">
-                            <div class="comment-meta">
-                                <h1 class="name">Groot Will</h1>
-                                <h5 class="comment-time">3 years ago</h5>
-                            </div>
-                            <p>
-                                That far ground rat pure from newt far panther crane lorikeet overlay alas cobra across
-                                much gosh less goldfinch ruthlessly alas examined and that more and the ouch jeez.
-                            </p>
-                        </div>
+
+                        @endforeach
+
                     </div>
 
-                    <div class="comment-card">
-                        <div class="img">
-                            <img src="{{ asset('assets/images/user.jpg') }}">
-                        </div>
-                        <div class="comment-data">
-                            <div class="comment-meta">
-                                <h1 class="name">Groot Will</h1>
-                                <h5 class="comment-time">3 years ago</h5>
-                            </div>
-                            <p>
-                                That far ground rat pure from newt far panther crane lorikeet overlay alas cobra across
-                                much gosh less goldfinch ruthlessly alas examined and that more and the ouch jeez.
-                            </p>
-                        </div>
-                    </div>
+                @else
 
-                    <div class="comment-card">
-                        <div class="img">
-                            <img src="{{ asset('assets/images/user.jpg') }}">
-                        </div>
-                        <div class="comment-data">
-                            <div class="comment-meta">
-                                <h1 class="name">Groot Will</h1>
-                                <h5 class="comment-time">3 years ago</h5>
-                            </div>
-                            <p>
-                                That far ground rat pure from newt far panther crane lorikeet overlay alas cobra across
-                                much gosh less goldfinch ruthlessly alas examined and that more and the ouch jeez.
-                            </p>
-                        </div>
-                    </div>
+                    <h3 style="display: table; margin: 30px auto 100px auto;">Comments Not Available</h3>
 
-                    <div class="comment-card">
-                        <div class="img">
-                            <img src="{{ asset('assets/images/user.jpg') }}">
-                        </div>
-                        <div class="comment-data">
-                            <div class="comment-meta">
-                                <a href="" class="name">Groot Will</a>
-                                <h5 class="comment-time">3 years ago</h5>
-                            </div>
-                            <p>
-                                That far ground rat pure from newt far panther crane lorikeet overlay alas cobra across
-                                much gosh less goldfinch ruthlessly alas examined and that more and the ouch jeez.
-                            </p>
-                        </div>
-                    </div>
+                @endif
 
-                </div>
 
                 <div class="comment-form">
 
-                    <form action="" method="post">
+                    <form action="" method="post" autocomplete="off">
 
                         <div class="form-heading">
                             <h1>Write A Comment</h1>
@@ -347,12 +253,16 @@
 
                             <div class="row-1">
 
+                                @csrf
+
+                                <input type="hidden" name="blogId" value="{{ $blogData->BlogId }}">
+
                                 <div class="input-filed">
-                                    <input type="text" placeholder="Name" name="name">
+                                    <input type="text" placeholder="Name" name="name" required>
                                 </div>
 
                                 <div class="input-filed">
-                                    <input type="email" placeholder="Email" name="email">
+                                    <input type="email" placeholder="Email" name="email" required>
                                 </div>
 
                                 <div class="input-filed">
@@ -364,7 +274,8 @@
                             <div class="row-2">
 
                                 <div class="input-filed">
-                                    <textarea name="comment" placeholder="Enter your comment here.."></textarea>
+                                    <textarea name="comment" placeholder="Enter your comment here.."
+                                        required></textarea>
                                 </div>
 
                             </div>
@@ -381,7 +292,10 @@
                         </div>
 
 
-                        <button type="submit" class="comment-submit">post comment</button>
+                        <button type="submit" class="comment-submit">
+                            post comment
+                            <i class="fas fa-spinner fa-spin"></i>
+                        </button>
 
                     </form>
 
@@ -403,6 +317,7 @@
 
 
     <script>
+        // banner image scrolling script
         $(document).ready(function() {
 
             $(window).scroll(function() {
@@ -419,6 +334,48 @@
                 });
             });
 
+        });
+
+
+        // comment script
+        $(document).ready(function() {
+
+            $('.blog-page .blog-detail-container .comment-container .comment-form form').submit(function(e) {
+
+                e.preventDefault();
+
+                let form = $(this);
+                let formData = form.serialize();
+
+                form.find('.comment-submit').attr('disabled', true);
+
+                $.ajax({
+                    url: "{{ url('/blog/submitComment') }}",
+                    type: 'POST',
+                    data: formData,
+                    success: function(data) {
+
+                        form.find('.comment-submit').attr('disabled', false);
+
+                        if (data['status'] === 1) {
+                            form[0].reset();
+                            Swal.fire({
+                                icon: 'success',
+                                title: data['message'],
+                            });
+                        } //
+                        else if (data['status'] === 0) {
+                            $.each(data['errors'], function() {
+                                console.warn(this.toString());
+                            });
+                        } //
+                        else {
+                            alert("Something Wan't Wrong");
+                        }
+                    },
+                });
+
+            });
 
         });
     </script>
