@@ -41,14 +41,14 @@
                 Authors
             </a>
         </li>
-        <li>
+        {{-- <li>
             <a href="/admin/settings" class="{{ request()->is('admin/settings') ? 'active' : '' }}">
                 <span>
                     <i class="fal fa-cog"></i>
                 </span>
                 Settings
             </a>
-        </li>
+        </li> --}}
 
         <li class="logout-btn">
             <a href="/admin/logout">
