@@ -4,13 +4,21 @@
   margin: 0px;
   padding: 0px;
   outline: none;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
-body {
+.body-container {
   background-color: #2148c0;
 }
 
-body .container {
+.body-container {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.body-container .container {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -20,7 +28,7 @@ body .container {
   padding-bottom: 30px;
 }
 
-body .container .title h1 {
+.body-container .container .title h1 {
   color: white;
   display: table;
   margin: auto;
@@ -30,11 +38,11 @@ body .container .title h1 {
   text-transform: uppercase;
 }
 
-body .container form .inputs {
+.body-container .container form .inputs {
   margin-top: 40px;
 }
 
-body .container form .inputs .input-filed {
+.body-container .container form .inputs .input-filed {
   border: 1px solid white;
   padding: 13px 20px;
   border-radius: 5px;
@@ -49,11 +57,11 @@ body .container form .inputs .input-filed {
   grid-gap: 15px;
 }
 
-body .container form .inputs .input-filed span {
+.body-container .container form .inputs .input-filed span {
   color: #f7f7f7;
 }
 
-body .container form .inputs .input-filed input {
+.body-container .container form .inputs .input-filed input {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
@@ -63,7 +71,7 @@ body .container form .inputs .input-filed input {
   color: white;
 }
 
-body .container form .inputs .input-filed input::-webkit-input-placeholder {
+.body-container .container form .inputs .input-filed input::-webkit-input-placeholder {
   text-transform: uppercase;
   color: #f7f7f7;
   font-weight: 300;
@@ -71,7 +79,7 @@ body .container form .inputs .input-filed input::-webkit-input-placeholder {
   font-size: 0.95rem;
 }
 
-body .container form .inputs .input-filed input:-ms-input-placeholder {
+.body-container .container form .inputs .input-filed input:-ms-input-placeholder {
   text-transform: uppercase;
   color: #f7f7f7;
   font-weight: 300;
@@ -79,7 +87,7 @@ body .container form .inputs .input-filed input:-ms-input-placeholder {
   font-size: 0.95rem;
 }
 
-body .container form .inputs .input-filed input::-ms-input-placeholder {
+.body-container .container form .inputs .input-filed input::-ms-input-placeholder {
   text-transform: uppercase;
   color: #f7f7f7;
   font-weight: 300;
@@ -87,7 +95,7 @@ body .container form .inputs .input-filed input::-ms-input-placeholder {
   font-size: 0.95rem;
 }
 
-body .container form .inputs .input-filed input::placeholder {
+.body-container .container form .inputs .input-filed input::placeholder {
   text-transform: uppercase;
   color: #f7f7f7;
   font-weight: 300;
@@ -95,14 +103,14 @@ body .container form .inputs .input-filed input::placeholder {
   font-size: 0.95rem;
 }
 
-body .container form .inputs .error {
+.body-container .container form .inputs .error {
   color: #f5f5f5;
   padding: 5px;
   font-weight: normal;
   font-size: 0.9rem;
 }
 
-body .container form .login-btn {
+.body-container .container form .login-btn {
   width: 100%;
   background: none;
   border: none;
@@ -129,35 +137,35 @@ body .container form .login-btn {
   transition: background 0.3s;
 }
 
-body .container form .login-btn i {
+.body-container .container form .login-btn i {
   margin-left: 15px;
   display: none;
 }
 
-body .container form .login-btn:enabled:hover {
+.body-container .container form .login-btn:enabled:hover {
   background-color: #f5f5f5;
 }
 
-body .container form .login-btn:enabled:active {
+.body-container .container form .login-btn:enabled:active {
   -webkit-transform: translateY(1px);
           transform: translateY(1px);
 }
 
-body .container form .login-btn:disabled {
+.body-container .container form .login-btn:disabled {
   cursor: not-allowed;
   background-color: #f5f5f5;
 }
 
-body .container form .login-btn:disabled i {
+.body-container .container form .login-btn:disabled i {
   display: block;
 }
 
-body .container form .forgot-link {
+.body-container .container form .forgot-link {
   text-align: right;
   margin-top: 10px;
 }
 
-body .container form .forgot-link a {
+.body-container .container form .forgot-link a {
   color: white;
   text-decoration: none;
   letter-spacing: 0.4px;
@@ -166,7 +174,321 @@ body .container form .forgot-link a {
   transition: 0.3s;
 }
 
-body .container form .forgot-link a:hover {
+.body-container .container form .forgot-link a:hover {
   color: #f5f5f5;
+}
+
+.dashboard-body {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.dashboard-body .sidebar-container {
+  width: 250px;
+  height: 100vh;
+  background-color: #232946;
+  padding: 20px;
+}
+
+.dashboard-body .sidebar-container ul {
+  margin-top: 100px;
+}
+
+.dashboard-body .sidebar-container ul li {
+  list-style: none;
+  display: block;
+  margin-top: 10px;
+}
+
+.dashboard-body .sidebar-container ul li .active,
+.dashboard-body .sidebar-container ul li a:hover {
+  background-color: #eebbc3;
+  color: #232946;
+  font-weight: 500;
+}
+
+.dashboard-body .sidebar-container ul li a {
+  width: 100%;
+  height: 100%;
+  color: white;
+  display: block;
+  padding: 12px;
+  border-radius: 8px;
+  text-decoration: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
+}
+
+.dashboard-body .sidebar-container ul li a span {
+  margin-right: 8px;
+  font-size: 1.1rem;
+  width: 25px;
+  height: 25px;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+}
+
+.dashboard-body .sidebar-container ul .logout-btn {
+  position: relative;
+  top: 50px;
+}
+
+.dashboard-body .sidebar-container ul .logout-btn a {
+  border: 1px solid #eebbc3;
+  color: white;
+}
+
+.dashboard-body .content {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  background-color: #f1f1f1;
+  overflow: auto;
+}
+
+.dashboard-body .content .article-body,
+.dashboard-body .content .tag-body,
+.dashboard-body .content .author-body,
+.dashboard-body .content .category-body {
+  width: 90%;
+  margin: auto;
+  margin-top: 100px;
+  border-radius: 5px;
+  overflow-x: auto;
+  border: 1px solid #232946;
+  margin-bottom: 50px;
+}
+
+.dashboard-body .content .article-body table,
+.dashboard-body .content .tag-body table,
+.dashboard-body .content .author-body table,
+.dashboard-body .content .category-body table {
+  width: auto;
+  background-color: #cecece;
+  border-collapse: collapse;
+  border-radius: 5px;
+}
+
+.dashboard-body .content .article-body table *,
+.dashboard-body .content .tag-body table *,
+.dashboard-body .content .author-body table *,
+.dashboard-body .content .category-body table * {
+  text-align: left;
+  white-space: nowrap;
+  font-size: 0.95rem;
+}
+
+.dashboard-body .content .article-body table td,
+.dashboard-body .content .article-body table th,
+.dashboard-body .content .tag-body table td,
+.dashboard-body .content .tag-body table th,
+.dashboard-body .content .author-body table td,
+.dashboard-body .content .author-body table th,
+.dashboard-body .content .category-body table td,
+.dashboard-body .content .category-body table th {
+  padding: 13px 18px;
+}
+
+.dashboard-body .content .article-body table thead,
+.dashboard-body .content .tag-body table thead,
+.dashboard-body .content .author-body table thead,
+.dashboard-body .content .category-body table thead {
+  background-color: #232946;
+  color: white;
+}
+
+.dashboard-body .content .article-body table thead th,
+.dashboard-body .content .tag-body table thead th,
+.dashboard-body .content .author-body table thead th,
+.dashboard-body .content .category-body table thead th {
+  font-weight: 500;
+}
+
+.dashboard-body .content .article-body table tr:last-child,
+.dashboard-body .content .tag-body table tr:last-child,
+.dashboard-body .content .author-body table tr:last-child,
+.dashboard-body .content .category-body table tr:last-child {
+  border-bottom: none;
+}
+
+.dashboard-body .content .article-body table tr:nth-child(even),
+.dashboard-body .content .tag-body table tr:nth-child(even),
+.dashboard-body .content .author-body table tr:nth-child(even),
+.dashboard-body .content .category-body table tr:nth-child(even) {
+  background-color: #e6e6e6;
+}
+
+.dashboard-body .content .article-body table tr,
+.dashboard-body .content .article-body table thead,
+.dashboard-body .content .tag-body table tr,
+.dashboard-body .content .tag-body table thead,
+.dashboard-body .content .author-body table tr,
+.dashboard-body .content .author-body table thead,
+.dashboard-body .content .category-body table tr,
+.dashboard-body .content .category-body table thead {
+  border-bottom: 1px solid #000;
+}
+
+.dashboard-body .content .article-body table .action-menu,
+.dashboard-body .content .tag-body table .action-menu,
+.dashboard-body .content .author-body table .action-menu,
+.dashboard-body .content .category-body table .action-menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  grid-gap: 7px;
+}
+
+.dashboard-body .content .article-body table .action-menu a,
+.dashboard-body .content .tag-body table .action-menu a,
+.dashboard-body .content .author-body table .action-menu a,
+.dashboard-body .content .category-body table .action-menu a {
+  text-decoration: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  background-color: red;
+  color: white;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+}
+
+.dashboard-body .content .article-body table .action-menu a i,
+.dashboard-body .content .tag-body table .action-menu a i,
+.dashboard-body .content .author-body table .action-menu a i,
+.dashboard-body .content .category-body table .action-menu a i {
+  font-size: 0.8rem;
+}
+
+.dashboard-body .content .article-body {
+  margin-top: 0;
+}
+
+.dashboard-body .content .add-category-form,
+.dashboard-body .content .search-article-form,
+.dashboard-body .content .add-tag-form {
+  width: 90%;
+  margin: auto;
+  margin-bottom: 50px;
+}
+
+.dashboard-body .content .add-category-form form,
+.dashboard-body .content .search-article-form form,
+.dashboard-body .content .add-tag-form form {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.dashboard-body .content .add-category-form form input,
+.dashboard-body .content .add-category-form form label,
+.dashboard-body .content .search-article-form form input,
+.dashboard-body .content .search-article-form form label,
+.dashboard-body .content .add-tag-form form input,
+.dashboard-body .content .add-tag-form form label {
+  display: block;
+  background: none;
+  border: none;
+  border: 1px solid black;
+  width: 280px;
+  padding: 10px 15px;
+  font-size: 0.95rem;
+  border-radius: 5px;
+}
+
+.dashboard-body .content .add-category-form form input::-webkit-input-placeholder, .dashboard-body .content .add-category-form form input,
+.dashboard-body .content .add-category-form form label::-webkit-input-placeholder,
+.dashboard-body .content .add-category-form form label,
+.dashboard-body .content .search-article-form form input::-webkit-input-placeholder,
+.dashboard-body .content .search-article-form form input,
+.dashboard-body .content .search-article-form form label::-webkit-input-placeholder,
+.dashboard-body .content .search-article-form form label,
+.dashboard-body .content .add-tag-form form input::-webkit-input-placeholder,
+.dashboard-body .content .add-tag-form form input,
+.dashboard-body .content .add-tag-form form label::-webkit-input-placeholder,
+.dashboard-body .content .add-tag-form form label {
+  color: grey;
+}
+
+.dashboard-body .content .add-category-form form input:-ms-input-placeholder, .dashboard-body .content .add-category-form form input,
+.dashboard-body .content .add-category-form form label:-ms-input-placeholder,
+.dashboard-body .content .add-category-form form label,
+.dashboard-body .content .search-article-form form input:-ms-input-placeholder,
+.dashboard-body .content .search-article-form form input,
+.dashboard-body .content .search-article-form form label:-ms-input-placeholder,
+.dashboard-body .content .search-article-form form label,
+.dashboard-body .content .add-tag-form form input:-ms-input-placeholder,
+.dashboard-body .content .add-tag-form form input,
+.dashboard-body .content .add-tag-form form label:-ms-input-placeholder,
+.dashboard-body .content .add-tag-form form label {
+  color: grey;
+}
+
+.dashboard-body .content .add-category-form form input::-ms-input-placeholder, .dashboard-body .content .add-category-form form input,
+.dashboard-body .content .add-category-form form label::-ms-input-placeholder,
+.dashboard-body .content .add-category-form form label,
+.dashboard-body .content .search-article-form form input::-ms-input-placeholder,
+.dashboard-body .content .search-article-form form input,
+.dashboard-body .content .search-article-form form label::-ms-input-placeholder,
+.dashboard-body .content .search-article-form form label,
+.dashboard-body .content .add-tag-form form input::-ms-input-placeholder,
+.dashboard-body .content .add-tag-form form input,
+.dashboard-body .content .add-tag-form form label::-ms-input-placeholder,
+.dashboard-body .content .add-tag-form form label {
+  color: grey;
+}
+
+.dashboard-body .content .add-category-form form input::placeholder, .dashboard-body .content .add-category-form form input,
+.dashboard-body .content .add-category-form form label::placeholder,
+.dashboard-body .content .add-category-form form label,
+.dashboard-body .content .search-article-form form input::placeholder,
+.dashboard-body .content .search-article-form form input,
+.dashboard-body .content .search-article-form form label::placeholder,
+.dashboard-body .content .search-article-form form label,
+.dashboard-body .content .add-tag-form form input::placeholder,
+.dashboard-body .content .add-tag-form form input,
+.dashboard-body .content .add-tag-form form label::placeholder,
+.dashboard-body .content .add-tag-form form label {
+  color: grey;
+}
+
+.dashboard-body .content .add-category-form form button,
+.dashboard-body .content .search-article-form form button,
+.dashboard-body .content .add-tag-form form button {
+  background: none;
+  border: none;
+  width: 240px;
+  border-radius: 5px;
+  background-color: #232946;
+  color: white;
+  text-transform: uppercase;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+}
+
+.dashboard-body .content .search-article-form {
+  margin-top: 40px;
 }
 /*# sourceMappingURL=admin.css.map */

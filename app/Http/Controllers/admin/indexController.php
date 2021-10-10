@@ -52,4 +52,11 @@ class indexController extends Controller
             return back();
         }
     }
+
+    function logout(Request $request)
+    {
+        $request->session()->pull('admin');
+
+        return redirect('/');
+    }
 }

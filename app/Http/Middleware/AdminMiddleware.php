@@ -20,10 +20,10 @@ class AdminMiddleware
         // $request->session()->put('admin', 1);
         // $request->session()->pull('admin');
 
-        return $next($request);
-
-        if ($request->session()->has('admin')) {
-            return view('dashboard');
+        if (!$request->session()->has('admin')) {
+            return abort(404);
         }
+
+        return $next($request);
     }
 }

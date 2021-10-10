@@ -1,6 +1,10 @@
 <?php
 
+use App\Http\Controllers\admin\articleController;
+use App\Http\Controllers\admin\authorController as AdminAuthorController;
+use App\Http\Controllers\admin\categoryController as adminCategoryController;
 use App\Http\Controllers\admin\indexController;
+use App\Http\Controllers\admin\tagController as AdminTagController;
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CategoryController;
@@ -172,9 +176,48 @@ Route::group(['middleware' => ['clearCache']], function () {
 
     // admin site
 
+    // dashboard
+    Route::get('/admin', [indexController::class, 'index']);
+    Route::post('/admin/loginRequest', [indexController::class, 'login']);
 
+    // session check middleware
     Route::group(['middleware' => ['adminCheck']], function () {
-        Route::get('/admin', [indexController::class, 'index']);
-        Route::post('/admin/loginRequest', [indexController::class, 'login']);
+
+        // logout
+        Route::get('admin/logout', [indexController::class, 'logout']);
+
+
+        // ================= articles==============
+        Route::get('/admin/articles', [articleController::class, 'index']);
+
+        // delete query
+        Route::get('/admin/articles/delete/{blogId}', [articleController::class, 'deleteBlog']);
+
+        // search query
+        Route::get('/admin/articles/search', [articleController::class, 'search']);
+
+
+        // ================= category==============
+        Route::get('/admin/category', [admincategoryController::class, 'index']);
+
+        // delete query
+        Route::get('/admin/category/delete/{catId}', [adminCategoryController::class, 'deleteCategory']);
+
+        // add query
+        Route::post('/admin/category/add', [adminCategoryController::class, 'addCategory']);
+
+
+        // ================= tag ==============
+        Route::get('/admin/tags', [AdminTagController::class, 'index']);
+
+        // delete query
+        Route::get('/admin/tag/delete/{tagId}', [AdminTagController::class, 'deleteTag']);
+
+        // add query
+        Route::post('/admin/tag/add', [AdminTagController::class, 'addTag']);
+
+
+        // ================= author ==============
+        Route::get('/admin/authors', [AdminAuthorController::class, 'index']);
     });
 });
